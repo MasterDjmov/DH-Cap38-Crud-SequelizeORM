@@ -80,20 +80,29 @@ let moviesController = {
                 res.status(500).send('Error al crear la película');
             });
     },
-    edit: function(req, res) {
+    edit: async function(req, res) {
         // TODO
+
         db.Movies.findByPk(req.params.id)
         .then(function(movie){
-            res.render("moviesEdit",
-                {
-                    movie,fecha:format(movie.release_date, 'yyyy-MM-dd')
-                }
-            )
+            //como la pelicula lleva el genero, le voy a pasar tambien la lista para armar los generos en un combo
+            db.Genres.findAll()
+            .then(function(genresList){
+                res.render("moviesEdit",
+                    {
+                        movie,  //le paso la info de la pelicula a editar
+                        fecha:format(movie.release_date, 'yyyy-MM-dd'),  //le paso la fecha formateada para el input date
+                        genresList  //le paso la lista de generos para el combo
+                    }
+                )
+                
+            });
+           
         })  
     },
     update: async function (req,res) {
         // TODO
-        const { title, rating, awards, release_date, length } = req.body;
+        const { title, rating, awards, release_date, length, genre_id } = req.body;
             
             // Usar el método `create` del modelo para insertar datos en la base de datos
             await db.Movies.update(
@@ -103,7 +112,8 @@ let moviesController = {
                 rating: rating,
                 awards: awards,
                 release_date: release_date,
-                length: length
+                length: length,
+                genre_id: genre_id
             },
             //luego recibe el a quien modificar
             {

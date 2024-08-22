@@ -38,6 +38,15 @@
             <p><input type="date" name="release_date" id="release_date" value="<%= fecha %>" required></p>
             <label for="length">Length </label>
             <p><input type="number" name="length" id="" value="<%= movie.length %>" required></p>
+            <div class="row">
+                <div class="col-4">
+                        <select class="form-control" name="genre_id">
+                            <% genresList.forEach(genre => { %>
+                                <option value="<%= genre.id %>"><%= genre.name %></option>
+                            <% }) %>
+                        </select>
+                </div>
+            </div>
             <br>
             <p> <button class="botonAgregar btn btn-success" type="submit">Actualizar</button>
 

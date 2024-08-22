@@ -30,6 +30,13 @@
     <p>AWARDS: <%= movie.awards %> <%- (movie.awards>10)?'<i class="fa-solid fa-trophy"></i>':'<i class="fa-solid fa-award"></i>' %></p>
     <p>LENGTH: <%= movie.length + ' min'%> </p>
     <p>RELEASE DATE: <%= movie.release_date %> </p>
+    <p>
+        <% if (movie.genres) { %>
+            <b style="color:green">Genero(<%= movie.genres.name %>)</b>
+        <% } else { %>
+            (<span class="singenero">Sin género</span>)
+        <% } %>
+    </p>
     <br>
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
