@@ -1,0 +1,32 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+ul{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+a {
+  color: #1b485a;
+  font-size: 20px;
+}
+img{
+  width: 100%;
+}
+figure{
+  width: 20%;
+}
+.fa-thumbs-up,.fa-trophy{
+  color:green;
+}
+.fa-thumbs-down,.singenero{
+  color:red;
+}
+.fa-award{
+  color: blueviolet;
+}
