@@ -61,12 +61,12 @@ let moviesController = {
     add: function (req, res) {
        res.render('moviesAdd');  
     },
-    create: async function (req, res) {
+    create:  function (req, res) {
         
             const { title, rating, awards, release_date, length } = req.body;
             
             // Usar el método `create` del modelo para insertar datos en la base de datos
-            await db.Movies.create({
+            db.Movies.create({
                 title: title,
                 rating: rating,
                 awards: awards,

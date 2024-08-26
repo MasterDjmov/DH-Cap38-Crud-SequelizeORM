@@ -2,11 +2,13 @@ const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
 const indexRouter = require('./routes/index');
+const multer = require('multer');
 
 const moviesRoutes = require('./routes/moviesRoutes');
 const genresRoutes = require('./routes/genresRoutes');
 const actorsRoutes = require('./routes/actorsRoutes');
 const app = express();
+
 app.use(methodOverride('_method'));
 // view engine setup
 app.set('views', path.resolve(__dirname, './views'));
@@ -16,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../public')));
+
 
 app.use('/', indexRouter);
 app.use(moviesRoutes);
