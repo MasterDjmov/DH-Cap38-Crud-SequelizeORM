@@ -31,13 +31,20 @@ module.exports = (Sequelize, dataTypes) =>{
             as:'movies',
             foreignKey: "favorite_movie_id"
         });
-        Actors.hasMany(models.Actor_Movie,{
-            as:'actors_movie',
-            foreignKey: "actor_id"
-        });
-        Actors.hasMany(models.Actor_Episode,{
-            as:'actors_episode',
-            foreignKey: "actor_id"
+        // Actors.hasMany(models.Actor_Movie,{
+        //     as:'actors_movie',
+        //     foreignKey: "actor_id"
+        // });
+        // Actors.hasMany(models.Actor_Episode,{
+        //     as:'actors_episode',
+        //     foreignKey: "actor_id"
+        // });
+        Actors.belongsToMany(models.Movies, {
+            as: 'moviesAll',
+            through: 'actor_movie',
+            foreignKey: "actor_id",
+            otherKey: 'movie_id',
+            timestamps: false
         });
     }
     return Actors;

@@ -8,7 +8,10 @@ let storage = multer.diskStorage({
         cb(null,path.resolve(__dirname,'../../public/img/uploads'));
     },
     filename: function(req, file,cb){
-        cb(null,file.originalname + '-' + Date.now() + path.extname(file.originalname));
+        const fileName = file.originalname + '-' + Date.now() + path.extname(file.originalname);
+        cb(null,fileName);
+        // Guarda el nombre generado en el objeto req
+        req.generatedFileName = fileName;
     }
 });
 

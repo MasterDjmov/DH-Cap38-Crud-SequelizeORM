@@ -9,6 +9,7 @@ let actorsController = {
             include:[{association:"movies"}]
         })
         .then(function(actors){
+            console.log(actors.movies)
             res.render("actorsList",
                 {
                     actors
@@ -19,7 +20,13 @@ let actorsController = {
     },
     detail:(req,res)=>{
         db.Actors.findByPk(req.params.id,{
-            include:[{association:"movies"}]
+            include:[
+                {
+                    association:"movies"
+                },
+                {
+                    association:"moviesAll"
+                }]
         })
         .then(function(actor){
             res.render("actorsDetail",

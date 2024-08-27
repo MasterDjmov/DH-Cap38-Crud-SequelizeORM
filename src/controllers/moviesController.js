@@ -18,9 +18,18 @@ let moviesController = {
     },
     detail:(req,res)=>{
         db.Movies.findByPk(req.params.id,{
-            include:[{association:"genres"}]
+            include:[
+                {
+                    association:"genres"
+                },
+                {
+                    association:"actores"
+                },
+                
+            ]
         })
         .then(function(movie){
+            console.log(movie.actores)
             res.render("moviesDetail",
                 {
                     movie

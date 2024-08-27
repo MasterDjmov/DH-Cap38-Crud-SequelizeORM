@@ -18,7 +18,11 @@ router.post('/subir', fileupload.single('imagen'), function(req, res, next) {
   if (!req.file) {
     return res.status(400).send("Error: No se subió ningún archivo.");
   }
-  
+  // Obtén el nombre del archivo generado desde req
+  const fileName = req.generatedFileName;
+
+  // Aquí puedes hacer lo que necesites con el nombre del archivo
+  console.log('Nombre del archivo subido:', fileName);
   // Si llegamos aquí, la subida fue exitosa
   res.render('subir', { title: 'Digital Movies', mensaje: 'Archivo subido con éxito' });
 });

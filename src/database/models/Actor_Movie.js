@@ -20,15 +20,15 @@ module.exports = (Sequelize, dataTypes) =>{
         updatedAt: 'updated_at' 
     }
     const Actor_Movie = Sequelize.define(alias,cols,config);
-    Actor_Movie.associate = function(models){
-        Actor_Movie.belongsTo(models.Actors,{
-            as:'actors',
-            foreignKey: "actor_id"
-        });
-        Actor_Movie.belongsTo(models.Movies,{
-            as:'movies',
-            foreignKey: "movie_id"
-        });
-    }
+    // Actor_Movie.associate = function(models){
+    //     Actor_Movie.belongsTo(models.Actors,{
+    //         as:'actors',
+    //         foreignKey: "actor_id"
+    //     });
+    //     Actor_Movie.belongsTo(models.Movies,{
+    //         as:'movies',
+    //         foreignKey: "movie_id"
+    //     });
+    // }
     return Actor_Movie;
 }
