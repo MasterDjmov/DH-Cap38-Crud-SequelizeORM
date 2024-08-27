@@ -33,7 +33,11 @@
             <% }else{ %>
                 <i class="fa-regular fa-star" title="No Tiene Películas Favoritas"></i>
             <%} %>
-           
+            <% if (actors[i].moviesAll && actors[i].moviesAll.length > 0) { %>
+                (work in films: <%= actors[i].moviesAll.length %>)
+            <% } else { %>
+                0
+            <% } %>
             
         </li>
         <% } %>

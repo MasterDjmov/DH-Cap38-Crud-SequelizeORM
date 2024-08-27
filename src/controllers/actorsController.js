@@ -6,7 +6,14 @@ let actorsController = {
     movies:[],
     list:(req,res)=>{
         db.Actors.findAll({
-            include:[{association:"movies"}]
+            include:[
+                {
+                    association:"movies"
+                },
+                {
+                    association:"moviesAll"
+                }
+            ]
         })
         .then(function(actors){
             console.log(actors.movies)
