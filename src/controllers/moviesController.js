@@ -1,6 +1,8 @@
 const { format } = require('date-fns');
 const { Association } = require('sequelize');
 const db = require('../database/models/index');
+const crypto = require('node:crypto');
+
 let moviesController = {
     list:(req,res)=>{
         db.Movies.findAll({
@@ -8,6 +10,7 @@ let moviesController = {
         })
         .then(function(movies){
            // console.log(movies[1].generos.name)
+           
             res.render("moviesList",
                 {
                     movies

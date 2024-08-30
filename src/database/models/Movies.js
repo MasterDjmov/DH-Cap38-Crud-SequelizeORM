@@ -36,23 +36,17 @@ module.exports = (Sequelize, dataTypes) =>{
             as:'genres',
             foreignKey: "genre_id"
         });
+
         Movies.hasMany(models.Actors,{
             as:'actors',
             foreignKey: "favorite_movie_id"
         });
-        // Movies.hasMany(models.Actor_Movie,{
-        //     as:'actors_movie',
-        //     foreignKey: "movie_id"
-        // });
-        // Movies.hasMany(models.Actor_Episode,{
-        //     as:'actors_episode',
-        //     foreignKey: "episode_id"
-        // });
+        
         Movies.belongsToMany(models.Actors,{
             as:'actores',
             through: 'actor_movie',
             foreignKey: "movie_id",
-            otherKey:'actor_id',
+            //otherKey:'actor_id',
             timestamps:false
         });
     }
