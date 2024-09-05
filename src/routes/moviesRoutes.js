@@ -15,4 +15,7 @@ router.put('/movies/update/:id', moviesController.update);
 router.get('/movies/delete/:id', moviesController.delete);
 //router.???('', moviesController.destroy);<<----------debe estar mal, destroy es metodo de sequelize
 
+
+//consultas node-fetch
+router.post('/movies/apicheck', moviesController.apicheck);
 module.exports = router;

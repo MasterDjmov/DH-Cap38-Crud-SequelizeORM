@@ -2,6 +2,8 @@ const { format } = require('date-fns');
 const { Association } = require('sequelize');
 const db = require('../database/models/index');
 const crypto = require('node:crypto');
+//npm install node-fetch@2
+const fetch = require('node-fetch');
 
 let moviesController = {
     list:(req,res)=>{
@@ -156,6 +158,24 @@ let moviesController = {
     destroy: function (req, res) {
         // TODO
         /*destory lo aplico arriba en el metodo delete*/
+    },
+
+
+    //usando nodefetch
+    apicheck:(req, res)=>{
+        //https://www.omdbapi.com/?apikey=d4e35e92&t=Doctor+Strange
+        let titulo = req.body.titulo;
+        let apiKey="d4e35e92";
+        url="https://www.omdbapi.com/?apikey="+apiKey+"&t="+titulo;
+        console.log(url);
+
+        fetch(url)
+        //fetch("https://www.omdbapi.com/?apikey=d4e35e92&t=Doctor+Strange")
+        .then(response=>response.json())
+        .then(movie=>{
+            console.log(movie);
+            res.json(movie);
+        })
     }
 }
 
